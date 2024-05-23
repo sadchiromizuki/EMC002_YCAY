@@ -1,340 +1,110 @@
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>What Can JavaScript Do?</h2>
-
-<p id="demo">JavaScript can change HTML content.</p>
-
-<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
-
-</body>
-</html> -->
-
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
-<!-- 
 <!DOCTYPE html>
 <html>
-<body>
+  <script>
+    var num, temp;
+    function fun()
+    {
+      num = parseInt(document.getElementById("num").value);
+      if(num)
+      {
+        temp = document.getElementById("resPara");
+        temp.style.display = "block";
+        if(num%2==0)
+          document.getElementById("res").innerHTML = "Even";
+        else
+          document.getElementById("res").innerHTML = "Odd";
+      }
+    }
 
-<h2>What Can JavaScript Do?</h2>
+    window.onload = () => {
+    let button = document.querySelector("#btn");
+    button.addEventListener("click", calculateBMI);
+};
+ 
+function calculateBMI() {
 
-<p id="demo">JavaScript can change the style of an HTML element.</p>
+    let height = parseInt(document
+            .querySelector("#height").value);
+ 
 
-<button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button>
+    let weight = parseInt(document
+            .querySelector("#weight").value);
+ 
+    let result = document.querySelector("#result");
+ 
 
-</body>
-</html>  -->
+    if (height === "" || isNaN(height)) 
+        result.innerHTML = "Provide a valid Height!";
+ 
+    else if (weight === "" || isNaN(weight)) 
+        result.innerHTML = "Provide a valid Weight!";
+ 
 
-<!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    else {
 
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>What Can JavaScript Do?</h2>
-
-<p id="demo" style="display:none;">JavaScript can hide HTML elements.</p>
-
-<button type="button" onclick="document.getElementById('demo').style.display='block'">Click Me!</button>
-
-</body>
-</html>  -->
-
-<!-- +++++++++++++++++++++Inner HTML ++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>My First Web Page</h2>
-<p>My First Paragraph.</p>
-
-<p id="demo"></p>
-
-<script>
-document.getElementById("demo").innerHTML = 5 + 6;
-</script>
-
-</body>
-</html>  -->
-
-
-<!-- +++++++++++++++++++++Using document.write() ++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>My First Web Page</h2>
-<p>My first paragraph.</p>
-
-<p>Never call document.write after the document has finished loading.
-It will overwrite the whole document.</p>
-
-<script>
-document.write(5 + 6);
-</script>
-
-</body>
-</html>  -->
-
-<!-- +++++++++++++++++++++Using window.alert() ++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>My First Web Page</h2>
-<p>My first paragraph.</p>
-
-<script>
-window.alert(5 + 6);
-</script>
-
-</body>
-</html>  -->
-<!-- +++++++++++++++++++++Using console.log() ++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>Activate Debugging</h2>
-
-<p>F12 on your keyboard will activate debugging.</p>
-<p>Then select "Console" in the debugger menu.</p>
-<p>Then click Run again.</p>
-
-<script>
-console.log(5 + 6);
-</script>
-
-</body>
-</html>  -->
-
-
-<!-- +++++++++++++++++++++Using console.log() ++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>The window.print() Method</h2>
-
-<p>Click the button to print the current page.</p>
-
-<button onclick="window.print()">Print this page</button>
-
-</body>
-</html> -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript switch</h2>
-
-<p id="demo"></p>
-
-<script>
-// How to create variables:
-var x;
-let y;
-// How to use variables:
-x = 5; y = 6;
-let z = x + y;
-</script>
-<button type="button" onclick='document.getElementById("demo").innerHTML = z'>Click Me!</button>
-</body>
-</html> 
-
-<!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript if .. else</h2>
-
-<p>A time-based greeting:</p>
-
-<p id="demo"></p>
-
-<script>
-const time = new Date().getHours();
-let greeting;
-if (time < 10) {
-  greeting = "Good morning";
-} else if (time < 20) {
-  greeting = "Good day";
-} else {
-  greeting = "Good evening";
-}
-document.getElementById("demo").innerHTML = greeting;
-</script>
-
-</body>
-</html> -->
-
-
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript switch</h2>
-
-<p id="demo"></p>
-
-<script>
-let day;
-switch (new Date().getDay()) {
-  case 0:
-    day = "Sunday";
-    break;
-  case 1:
-    day = "Monday";
-    break;
-  case 2:
-    day = "Tuesday";
-    break;
-  case 3:
-    day = "Wednesday";
-    break;
-  case 4:
-    day = "Thursday";
-    break;
-  case 5:
-    day = "Friday";
-    break;
-  case  6:
-    day = "Saturday";
-}
-document.getElementById("demo").innerHTML = "Today is " + day;
-</script>
-
-</body>
-</html> -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript For Loop</h2>
-
-<p id="demo"></p>
-
-<script>
-let text = "";
-
-for (let i = 0; i < 5; i++) {
-  text += "The number is " + i + "<br>";
+        let bmi = (weight / ((height * height) 
+                            / 10000)).toFixed(2);
+ 
+        if (bmi < 18.5) result.innerHTML =
+            `Under Weight : <span>${bmi}</span>`;
+ 
+        else if (bmi >= 18.5 && bmi < 24.9) 
+            result.innerHTML = 
+                `Normal : <span>${bmi}</span>`;
+ 
+        else result.innerHTML =
+            `Over Weight : <span>${bmi}</span>`;
+    }
 }
 
-document.getElementById("demo").innerHTML = text;
-</script>
+function checkInput() {
+            var text = document.getElementById("userText").value;
 
-</body>
-</html> -->
+            if (text === "") {
+                alert("Please enter some text!");
+            } 
+            else {
+                document.getElementById("message").innerHTML = "You entered: " + text;
+            }
+        }
+    </script>
+    </head>
+    <body>
+    <style>
+      body{
+        background-color: rgb(236, 243, 143);
+      }
+      p{
+         font-size: 25px;
+         font-family: monospace;  
+      }
+      h1{
+        color: rgb(255, 45, 115);
+        font-family: Helvetica;  
+      }
+    </style>
+    <h1>Even and Odd Numbers</h1>
+    <p>Enter the Number: <input id="num"><button onclick="fun()">Submit</button></p>
+    <p id="resPara" style="display:none;">It is an <span id="res"></span> Number</p>
 
+    <div class="container">
+      <br>
+      <h1>BMI Calculator</h1>
 
-<!-- ---------------------------FOR IN------------------------------- -->
+      <p>Height (in cm)</p>
 
-<!-- <!DOCTYPE html>
-<html>
-<body>
-<h1>JavaScript Arrays</h1>
-<h2>For In Loops</h2>
-<p>The for in statement can loops over array values:</p>
+      <input type="text" id="height" />
 
-<p id="demo"></p>
+      <p>Weight (in kg)</p>
 
-<script>
-const numbers = [45, 4, 9, 16, 25];
+      <input type="text" id="weight" />
 
-let txt = "";
-for (let x in numbers) {
-  txt += numbers[x] + "<br>"; 
-}
+      <button id="btn">Calculate</button>
 
-document.getElementById("demo").innerHTML = txt;
-</script>
-
-</body>
-</html> -->
-
-
-<!-- ---------------------------FOR Of------------------------------- -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript For Of Loop</h2>
-<p>The for of statement loops through the values of any iterable object:</p>
-
-<p id="demo"></p>
-
-<script>
-const cars = ["BMW", "Volvo", "Mini"];
-
-let text = "";
-for (let x of cars) {
-  text += x + "<br>";
-}
-
-document.getElementById("demo").innerHTML = text;
-</script>
-
-</body>
-</html> -->
-
-<!-- ---------------------------while------------------------------- -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript While Loop</h2>
-
-<p id="demo"></p>
-
-<script>
-let text = "";
-let i = 0;
-while (i < 10) {
-  text += "<br>The number is " + i;
-  i++;
-}
-document.getElementById("demo").innerHTML = text;
-</script>
-
-</body>
-</html> -->
-
-<!-- ---------------------------do - while------------------------------- -->
-
-<!-- <!DOCTYPE html>
-<html>
-<body>
-
-<h2>JavaScript Do While Loop</h2>
-
-<p id="demo"></p>
-
-<script>
-let text = ""
-let i = 0;
-
-do {
-  text += "<br>The number is " + i;
-  i++;
-}
-while (i < 10);  
-
-document.getElementById("demo").innerHTML = text;
-</script>
-
-</body>
-</html> -->
+      <div id="result"></div>
+  </div>
+  <br>
+  <h1>Alert Box</h1>    
+  <input type="text" id="userText">  <button onclick="checkInput()">Check Text</button>  <p id="message"></p> 
+    </body>
+    </html>
