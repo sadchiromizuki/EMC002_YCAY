@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    var num, temp;
+    function fun()
+    {
+      num = parseInt(document.getElementById("num").value);
+      if(num)
+      {
+        temp = document.getElementById("resPara");
+        temp.style.display = "block";
+        if(num%2==0)
+          document.getElementById("res").innerHTML = "Even";
+        else
+          document.getElementById("res").innerHTML = "Odd";
+      }
+    }
+
+    window.onload = () => {
+    let button = document.querySelector("#btn");
+    button.addEventListener("click", calculateBMI);
+};
+ 
+function calculateBMI() {
+
+    let height = parseInt(document
+            .querySelector("#height").value);
+ 
+
+    let weight = parseInt(document
+            .querySelector("#weight").value);
+ 
+    let result = document.querySelector("#result");
+ 
+
+    if (height === "" || isNaN(height)) 
+        result.innerHTML = "Provide a valid Height!";
+ 
+    else if (weight === "" || isNaN(weight)) 
+        result.innerHTML = "Provide a valid Weight!";
+ 
+
+    else {
+
+        let bmi = (weight / ((height * height) 
+                            / 10000)).toFixed(2);
+ 
+        if (bmi < 18.5) result.innerHTML =
+            `Under Weight : <span>${bmi}</span>`;
+ 
+        else if (bmi >= 18.5 && bmi < 24.9) 
+            result.innerHTML = 
+                `Normal : <span>${bmi}</span>`;
+ 
+        else result.innerHTML =
+            `Over Weight : <span>${bmi}</span>`;
+    }
+}
+
+function checkInput() {
+            var text = document.getElementById("userText").value;
+
+            if (text === "") {
+                alert("Please enter some text!");
+            } 
+            else {
+                document.getElementById("message").innerHTML = "You entered: " + text;
+            }
+        }
+    </script>
+    </head>
+    <body>
+    <style>
+      body{
+        background-color: rgb(236, 243, 143);
+      }
+      p{
+         font-size: 25px;
+         font-family: monospace;  
+      }
+      h1{
+        color: rgb(255, 45, 115);
+        font-family: Helvetica;  
+      }
+    </style>
+    <h1>Even and Odd Numbers</h1>
+    <p>Enter the Number: <input id="num"><button onclick="fun()">Submit</button></p>
+    <p id="resPara" style="display:none;">It is an <span id="res"></span> Number</p>
+
+    <div class="container">
+      <br>
+      <h1>BMI Calculator</h1>
+
+      <p>Height (in cm)</p>
+
+      <input type="text" id="height" />
+
+      <p>Weight (in kg)</p>
+
+      <input type="text" id="weight" />
+
+      <button id="btn">Calculate</button>
+
+      <div id="result"></div>
+  </div>
+  <br>
+  <h1>Alert Box</h1>    
+  <input type="text" id="userText">  <button onclick="checkInput()">Check Text</button>  <p id="message"></p> 
+    </body>
+    </html>
